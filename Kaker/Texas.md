@@ -17,9 +17,13 @@ Ingredienser
 Fremgangsmåte
 -------------
 Smelt margarin sammen med bakekakao og vann. Sett til avkjøling i vannbad.
+
 Bland natron, lettrømme og salt i en bolle; gjerne i bollen til en kjøkkenmaskin.
+
 Bland mel og sukker i en annen bolle.
+
 Når det flytende er avkjølt blandes det med det andre våte. Sikt inn mel og sukker under omrøring.
+
 Hel i langpanne og sett i KALD ovn og sett den på 180 grader i 30 minutter.
 
 Fyll
@@ -35,7 +39,9 @@ Ingredienser
 Fremgangsmåte
 -------------
 Smelt margarin og bland med melk, bakekakao og vaniljesukker.
+
 Avkjøl og bland inn mels. NB! Husk å sikte melis for et jevnt resultat.
+
 Bruk gjerne kjøkkenmaskin med eltekrok (ikke visp eller K-krok da blandingen blir veldig fast).
 
 Ha fyll på kaken når kaken er avkjølt.
