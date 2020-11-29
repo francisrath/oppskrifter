@@ -3,6 +3,5 @@
 
 @import "{{ site.theme }}";
 @media print {
-    header { display: none; }
-    div#footer_wrap { display: none; }
+    header, footer { display: none; }
  }
