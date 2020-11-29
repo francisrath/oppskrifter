@@ -7,7 +7,7 @@
 
 Bland alt sammen og ha i en 24 cm form. Stekes ved 180°C i ca. 30 minutter.
 
-Bunnen må være kald før fyllet legges på. Bunnen kan fryses.
+Bunnen må være kald før fyllet legges på.
 
 
 ## Fyll
@@ -17,4 +17,6 @@ Bunnen må være kald før fyllet legges på. Bunnen kan fryses.
 - 1 ts vaniljesukker
 - 100 g bondesmør
 
-Kok opp kremfløte, sukker, eggeplommer og vaniljesukker. Kjøl av og rør inn temperert bondesmør. Smør fyllet på kaken om den skal serveres nå, eller frys fyll og bunn hver for seg om den skal serveres seinere.
+Kok opp kremfløte, sukker, eggeplommer og vaniljesukker. Kjøl av og rør inn temperert bondesmør. 
+
+Når fyllet er kjølt ned kan du ta det på kaken. Kaken kan fryses.
