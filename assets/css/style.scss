@@ -1,8 +1,0 @@
----
----
-
-@import "{{ site.theme }}";
-
-@media print {
-    #header_wrap, #footer_wrap { display: none; }
-}
