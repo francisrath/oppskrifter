@@ -1,0 +1,240 @@
+/* Oppskrifter — a family cookbook, set as a table of contents. */
+
+:root {
+  --paper:     #faf6ef;
+  --ink:       #23201c;
+  --ink-soft:  #6f6759;
+  --rule:      #ddd3c4;
+  --accent:    #9c3024;
+  --serif: "Fraunces", Georgia, serif;
+  --sans:  "Atkinson Hyperlegible", ui-sans-serif, sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper:    #1a1714;
+    --ink:      #ece6dc;
+    --ink-soft: #9a9186;
+    --rule:     #3a332c;
+    --accent:   #e2795f;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 var(--sans);
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- chrome ---------- */
+
+.masthead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 0;
+}
+
+.wordmark {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  font-variation-settings: "opsz" 12;
+  letter-spacing: .01em;
+  text-decoration: none;
+}
+
+.back {
+  font-size: .8125rem;
+  letter-spacing: .04em;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.back::before { content: "← "; }
+.back:hover { color: var(--accent); }
+
+.colophon {
+  max-width: 42rem;
+  margin: 5rem auto 0;
+  padding: 1.25rem 1.5rem 3rem;
+  border-top: 1px solid var(--rule);
+  font-size: .8125rem;
+  color: var(--ink-soft);
+}
+.colophon a { color: inherit; text-decoration-color: var(--rule); }
+.colophon a:hover { color: var(--accent); }
+
+/* ---------- table of contents ---------- */
+
+.toc {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 0;
+}
+
+.toc-group + .toc-group { margin-top: 3.25rem; }
+
+.toc-group h2 {
+  margin: 0 0 .85rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.toc ul { margin: 0; padding: 0; list-style: none; }
+
+.toc a {
+  display: flex;
+  align-items: baseline;
+  padding: .5rem 0;
+  text-decoration: none;
+}
+
+.entry-name {
+  font-family: var(--serif);
+  font-size: 1.3125rem;
+  font-variation-settings: "opsz" 24;
+  line-height: 1.25;
+}
+
+.leader {
+  flex: 1;
+  min-width: 1.5rem;
+  margin: 0 .7em;
+  border-bottom: 1px dotted var(--rule);
+  transform: translateY(-.3em);
+}
+
+.entry-num {
+  font-size: .8125rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+}
+
+.toc a:hover .entry-name { color: var(--accent); }
+.toc a:hover .leader { border-bottom-color: var(--accent); }
+.toc a:hover .entry-num { color: var(--accent); }
+
+/* ---------- recipe ---------- */
+
+.recipe {
+  max-width: 36rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 0;
+}
+
+.recipe h1 {
+  margin: 0 0 1.5rem;
+  font-family: var(--serif);
+  font-size: clamp(2.25rem, 7vw, 3.25rem);
+  font-weight: 400;
+  font-variation-settings: "opsz" 100;
+  line-height: 1.05;
+  letter-spacing: -.015em;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 0 2rem;
+  border-radius: 2px;
+}
+
+.copy {
+  margin: 0 0 2.25rem;
+  padding: .55rem 1rem;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font: 700 .8125rem/1 var(--sans);
+  letter-spacing: .03em;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color .15s, color .15s;
+}
+.copy:hover { border-color: var(--accent); color: var(--accent); }
+.copy.is-done { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- prose ---------- */
+
+.prose { max-width: 34rem; }
+
+.prose > :first-child { margin-top: 0; }
+
+.prose h2, .prose h3 {
+  margin: 2.75rem 0 .9rem;
+  padding-bottom: .45rem;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.prose p { margin: 0 0 1.15rem; }
+
+.prose ul {
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.prose ul li {
+  position: relative;
+  padding: .3rem 0 .3rem 1.4rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--rule) 55%, transparent);
+}
+.prose ul li:last-child { border-bottom: 0; }
+
+.prose ul li::before {
+  content: "";
+  position: absolute;
+  left: .25rem;
+  top: 1.05em;
+  width: .35rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.prose ol { margin: 0 0 1.5rem; padding-left: 1.3rem; }
+.prose ol li { padding: .2rem 0; }
+
+.prose strong { font-weight: 700; }
+
+.prose a { color: var(--accent); }
+
+/* ---------- print ---------- */
+
+@media print {
+  .masthead, .colophon, .copy, .photo { display: none; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .recipe { max-width: none; padding: 0; }
+  .prose { max-width: none; }
+  .prose h2, .prose h3 { border-color: #999; color: #000; }
+  .prose ul li { border-bottom: 0; padding-top: .1rem; padding-bottom: .1rem; }
+  .prose ul li::before { background: #000; }
+  .recipe h1 { font-size: 24pt; }
+}

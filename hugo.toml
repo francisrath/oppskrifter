@@ -1,0 +1,14 @@
+baseURL = "https://francisrath.github.io/oppskrifter/"
+title = "Oppskrifter"
+locale = "nb-NO"
+defaultContentLanguage = "nb"
+enableRobotsTXT = true
+
+[params]
+  description = "Oppskriftene vi lager om igjen."
+
+[markup.goldmark.renderer]
+  hardWraps = false
+
+[taxonomies]
+  # none — kategori er mappa

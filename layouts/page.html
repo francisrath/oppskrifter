@@ -1,0 +1,54 @@
+{{ define "main" }}
+<article class="recipe">
+
+  <h1>{{ .Title }}</h1>
+
+  {{ with .Resources.GetMatch "{*.jpg,*.jpeg,*.png,*.webp}" }}
+    {{ $w := cond (lt .Width 1400) .Width 1400 }}
+    {{ $img := .Resize (printf "%dx webp q80" $w) }}
+    <img class="photo" src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $.Title }}" loading="lazy">
+  {{ end }}
+
+  {{ if in .Content "<li>" }}
+    <button class="copy" data-copy type="button">Kopier ingredienser</button>
+  {{ end }}
+
+  <div class="prose">
+    {{ .Content }}
+  </div>
+
+</article>
+
+{{ if in .Content "<li>" }}
+<script>
+document.querySelector('[data-copy]').addEventListener('click', async function () {
+  const text = [...document.querySelectorAll('.prose li')]
+    .map(li => li.textContent.trim()).filter(Boolean).join('\n');
+  const done = ok => {
+    this.textContent = ok ? 'Kopiert ✓' : 'Kopiering feilet';
+    this.classList.toggle('is-done', ok);
+    setTimeout(() => {
+      this.textContent = 'Kopier ingredienser';
+      this.classList.remove('is-done');
+    }, 2000);
+  };
+  try {
+    await navigator.clipboard.writeText(text);
+    done(true);
+  } catch {
+    // clipboard API needs a secure context; fall back for http / older Safari
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch {}
+    ta.remove();
+    done(ok);
+  }
+});
+</script>
+{{ end }}
+{{ end }}

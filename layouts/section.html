@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="toc">
+  <section class="toc-group">
+    <h2>{{ .Title }}</h2>
+    <ul>
+      {{ range .Pages.ByTitle }}
+      <li>
+        <a href="{{ .RelPermalink }}">
+          <span class="entry-name">{{ .Title }}</span>
+          <span class="leader" aria-hidden="true"></span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+</div>
+{{ end }}

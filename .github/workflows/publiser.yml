@@ -1,0 +1,57 @@
+name: Publiser
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+env:
+  HUGO_VERSION: 0.165.0
+
+jobs:
+  build:
+    runs-on: [self-hosted, linux]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Installer Hugo
+        run: |
+          set -euo pipefail
+          case "$(uname -m)" in
+            x86_64)        ARCH=amd64 ;;
+            aarch64|arm64) ARCH=arm64 ;;
+            *) echo "Ukjent arkitektur: $(uname -m)" >&2; exit 1 ;;
+          esac
+          mkdir -p "$RUNNER_TEMP/hugo-bin"
+          curl -sSfL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_linux-${ARCH}.tar.gz" \
+            | tar -xz -C "$RUNNER_TEMP/hugo-bin" hugo
+          echo "$RUNNER_TEMP/hugo-bin" >> "$GITHUB_PATH"
+
+      - name: Bygg
+        run: hugo --minify --gc
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  # Deploy kjører kun på master. PR-er bygger bare, så workflowen kan testes trygt.
+  deploy:
+    if: github.ref == 'refs/heads/master'
+    needs: build
+    runs-on: [self-hosted, linux]
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
