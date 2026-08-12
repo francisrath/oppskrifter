@@ -1,0 +1,6 @@
+baseURL = "https://francisrath.github.io/oppskrifter/"
+title = "Oppskrifter"
+locale = "nb-NO"
+
+[params]
+  description = "Oppskriftene vi lager om igjen."

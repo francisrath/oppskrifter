@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="toc">
+  {{ $n := 0 }}
+  {{ range site.Sections.ByWeight }}
+  <section class="toc-group">
+    <h2>{{ .Title }}</h2>
+    <ul>
+      {{ range .Pages.ByTitle }}
+      {{ $n = add $n 1 }}
+      <li>
+        <a href="{{ .RelPermalink }}">
+          <span class="entry-name">{{ .Title }}</span>
+          <span class="leader" aria-hidden="true"></span>
+          <span class="entry-num">{{ printf "%02d" $n }}</span>
+        </a>
+      </li>
+      {{ end }}
+    </ul>
+  </section>
+  {{ end }}
+</div>
+{{ end }}
