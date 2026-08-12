@@ -21,9 +21,30 @@
 
 {{ if in .Content "<li>" }}
 <script>
+// "175 g smør" -> mengde, enhet, navn. Ukjent enhet = ingen enhet ("3 egg").
+const LINE = /^(\d+(?:[.,]\d+)?)\s*(g|kg|dl|l|ml|ss|ts|pk|stk|boks|plate|plater)?\s+(.+)$/i;
+
+function slaaSammen(linjer) {
+  const rekkefolge = [], perNavn = new Map();
+  for (const raw of linjer) {
+    const m = LINE.exec(raw);
+    if (!m) { rekkefolge.push({ raw }); continue; }
+    const [, tall, enhet = '', navn] = m;
+    const key = navn.toLowerCase();
+    let post = perNavn.get(key);
+    if (!post) { post = { navn, enheter: new Map() }; perNavn.set(key, post); rekkefolge.push(post); }
+    // ulike enheter for samme vare kan ikke summeres (120 g + 4 dl hvetemel)
+    post.enheter.set(enhet, (post.enheter.get(enhet) || 0) + parseFloat(tall.replace(',', '.')));
+  }
+  const tall = n => String(Math.round(n * 100) / 100).replace('.', ',');
+  return rekkefolge.map(p => p.raw ??
+    [...p.enheter].map(([e, n]) => [tall(n), e].filter(Boolean).join(' ')).join(' + ') + ' ' + p.navn);
+}
+
 document.querySelector('[data-copy]').addEventListener('click', async function () {
-  const text = [...document.querySelectorAll('.prose li')]
-    .map(li => li.textContent.trim()).filter(Boolean).join('\n');
+  const text = slaaSammen(
+    [...document.querySelectorAll('.prose li')].map(li => li.textContent.trim()).filter(Boolean)
+  ).join('\n');
   const done = ok => {
     this.textContent = ok ? 'Kopiert ✓' : 'Kopiering feilet';
     this.classList.toggle('is-done', ok);
