@@ -9,7 +9,7 @@ Sett ovnen på 150 °C.
 - 1 dl gresskarkjerner
 - 2 dl grovhakkede mandler
 - 2 dl grovhakkede valnøtter
-- 2 dl kokosmasse
+- 2 dl kokosmasse (kan sløyfes)
 
 Bland alt sammen og fordel utover en langpanne med bakepapir på. Settes 20 minutter i ovnen. Du bør røre rundt to ganger underveis.
 
@@ -22,3 +22,6 @@ Når du tar blandingen ut av ovnen kan du blande disse tingene i en bolle. Bruk 
 Bland først disse ingrediensene godt i bollen, og hell så müsli-blandingen over. Rør godt om, og fordel det tilbake på bakepapiret. Slå av ovnen, og sett langpannen inn i ovnen igjen med døren på gløtt. Kan gjerne stå slik over natten og kjøle ned sakte.
 
 Ta så blandingen på en lufttett beholder.
+
+## Servering
+Strø müsliet over naturell eller gresk yoghurt rørt med et par spiseskjeer vaniljekesam. Bær passer fint til — eller hjemmelaget syltetøy.
